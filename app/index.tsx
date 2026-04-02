@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function Index() {
   return (
@@ -28,39 +28,43 @@ export default function Index() {
           <View style={styles.addressRow}>
             <Text style={styles.addressLabel}>Address</Text>
             <View style={styles.addressInput}>
-              <Text style={styles.addressInputText}>http://hihihihihihihihihihihihihihihihihihihihihihi.com :3c</Text>
+              <Text style={styles.addressInputText}>http://hihihihihihihihihihihihihihihihihi.com</Text>
             </View>
           </View>
         </View>
 
         {/* Embedded "Webpage" Area */}
         <View style={styles.webpageBody}>
-          <View style={styles.headerRow}>
+          <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={true}>
+            
+            <View style={styles.headerRow}>
+              <Image 
+                source={require('../assets/images/hello.gif')} 
+                style={[styles.spinnyImageLeft, { imageRendering: 'pixelated' } as any]} 
+              />
+              
+              <Text style={styles.headerText}>Greetings! \(^-^)/</Text>
+
+              <Image 
+                source={require('../assets/images/hello2.gif')} 
+                style={[styles.spinnyImageRight, { imageRendering: 'pixelated' } as any]} 
+              />
+            </View>
+
+            <Text style={styles.bodyText}>
+              Hello! Welcome Welcome :) You might be wondering "what the hecky is this site" but fear not stranger! This was something I made to practice/learn about nonsnese while I wanted to make an update carrd, but this time for me and not my character ^_^
+              Disclaimer: The longer you read this, the longer you might question your life choices and decisions that lead you up to this moment. I am not liable for any lost brain cells or something tragic that manages to somehow magically points back to this website.
+              P.S. Only cool people are allowed here. If you're uncool or even worse... if you're one of my opps, then bye bye (Ok uncool people can stay, just not any of my opps OR IF YOU'RE HIM!!!!1!!!! ) o/  
+              *Note: Some things are under construction, will they ever be finished? Who knows but be warned*
+            </Text>
+
             <Image 
-              source={require('../assets/images/hello.gif')} 
-              style={[styles.spinnyImageLeft, { imageRendering: 'pixelated' } as any]} 
+              source={require('../assets/images/runningcat1.gif')} 
+              style={[styles.runningCat, { imageRendering: 'pixelated' } as any]}
+              
             />
             
-            <Text style={styles.headerText}>Greetings! \(^-^)/</Text>
-
-            <Image 
-              source={require('../assets/images/hello2.gif')} 
-              style={[styles.spinnyImageRight, { imageRendering: 'pixelated' } as any]} 
-            />
-
-          </View>
-          <Text style={styles.bodyText}>
-            Hello! Welcome Welcome :) You might be wondering "what the hecky is this site" but fear not stranger! This was something I made to practice/learn about nonsnese while I wanted to make an update carrd, but this time for me and not my character ^_^
-            Disclaimer: The longer you read this, the longer you might question your life choices and decisions that lead you up to this moment. I am not liable for any lost brain cells or something tragic that manages to somehow magically points back to this website.
-            P.S. Only cool people are allowed here. If you're uncool or even worse... if you're HIM, then bye bye (Ok uncool people can stay, just not HIM or my arch nemesis!!!!1!!!! ) o/  
-            *Note: Some things are under construction, will they ever be finished? Who knows but be warned*
-          </Text>
-
-          <Image 
-            source={require('../assets/images/runningcat1.gif')} 
-            style={[styles.runningCat, { imageRendering: 'pixelated' } as any]} 
-          />
-          
+          </ScrollView>
         </View>
 
       </View>
@@ -72,13 +76,14 @@ export default function Index() {
 const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    padding: 15, 
   },
   windowFrame: {
     width: '100%',
-    maxWidth: 650, 
+    maxWidth: 600, 
+    maxHeight: '85%', 
     borderWidth: 2,
     borderTopColor: '#ffffff',
     borderLeftColor: '#ffffff',
@@ -156,8 +161,7 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   webpageBody: {
-    padding: 30,
-    alignItems: 'center',
+    flex: 1, 
     backgroundColor: '#ffffff', 
     borderWidth: 2,
     borderTopColor: '#808080',
@@ -165,6 +169,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ffffff',
     borderRightColor: '#ffffff',
     margin: 4, 
+    padding: 15, 
+  },
+  scrollContent: {
+    alignItems: 'center', 
+    paddingRight: 10, 
   },
   headerRow: {
     flexDirection: 'row',
@@ -192,12 +201,12 @@ const styles = StyleSheet.create({
   bodyText: {
     color: '#000000', 
     fontFamily: 'W95FA', 
-    fontSize: 16,
+    fontSize: 14, 
     textAlign: 'center',
-    lineHeight: 24,
+    lineHeight: 22, 
     marginBottom: 30, 
   },
   runningCat: {
-
+    marginBottom: 40,
   }
 });
