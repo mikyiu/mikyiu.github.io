@@ -180,11 +180,14 @@ export default function About() {
             <Text style={styles.questionText}>Q: Do you like being used as a chair?</Text>
             <Text style={styles.answerText}>A: Why Yes I do :D.</Text>
 
+            <Text style={styles.questionText}>Q: How Tall are you?</Text>
+            <Text style={styles.answerText}>A: 5ft10 but on paper if we use math technically Acktually 6ft 1 (Cope).</Text>
+
             <Text style={styles.questionText}>Q: What's your biggest weakness?</Text>
             <Text style={styles.answerText}>A: A Box of Pepperoni Pizza and chocolate milkshake with fries. While we're at it, Chocolate chip cookies, and chocolate cake mmmmmmmmmmm.</Text>
 
             <Text style={styles.questionText}>Q: Where would you want to travel to the most?</Text>
-            <Text style={styles.answerText}>A: That's a good question. If I had to stay in the States, I'd love to visit some major cities in California =v= (San Francisco, San Deigo, Los Angeles, etc) but overall, I want to travel the world. In no order I'd visit Toronto, Vancouver B.C., Melbourne Australia, Tokyo Japan, Seoul South Korea, Jakarta Indonesia, Singapore, Quezon City, Mae Hong Son Thailand, Chiang Mai Thailand, and Auckland New Zealand!  </Text>
+            <Text style={styles.answerText}>A: That's a good question. If I had to stay in the States, I'd love to visit some major cities in California =v= (San Francisco, San Diego, Los Angeles, etc) but overall, I want to travel the world. In no order I'd visit Toronto, Vancouver B.C., Melbourne Australia, Tokyo Japan, Seoul South Korea, Jakarta Indonesia, Singapore, Quezon City, Mae Hong Son Thailand, Chiang Mai Thailand, and Auckland New Zealand!  </Text>
 
             <Text style={styles.questionText}>Q: Where do you find these gifs?</Text>
             <Text style={styles.answerText}>A: At Gifcities ^_^</Text>
@@ -335,6 +338,13 @@ export default function About() {
                 <Text style={styles.bullet}>15.</Text>
                 <Pressable onPress={() => Linking.openURL('https://www.youtube.com/watch?v=pjeF8aiQgLU')}>
                   <Text style={styles.linkText}>i'M a nIcE gUy pLeAsE nOtIcE mE!!!!!!!!!1!!!!!!! the musical</Text>
+                </Pressable>
+              </View>
+
+              <View style={styles.listItem}>
+                <Text style={styles.bullet}>16.</Text>
+                <Pressable onPress={() => Linking.openURL('https://www.youtube.com/watch?v=5_QwMRE-BKc')}>
+                  <Text style={styles.linkText}>This speaks to me...Idk why...</Text>
                 </Pressable>
               </View>
 
