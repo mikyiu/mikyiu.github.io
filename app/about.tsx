@@ -96,7 +96,7 @@ export default function About() {
         </View>
 
         <View style={styles.notepadBody}>
-          <ScrollView style={styles.scrollArea}>
+          <ScrollView style={styles.scrollArea} contentContainerStyle={styles.scrollContent}>
             
             <View style={styles.headerContainer}>
               <Image 
@@ -485,11 +485,15 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ffffff',
     borderRightColor: '#ffffff',
     margin: 4,
-    padding: 15,
   },
 
   scrollArea: {
     paddingRight: 10,
+    flex: 1,
+  },
+
+  scrollContent: {
+    padding: 15, 
   },
 
   headerContainer: {

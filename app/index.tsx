@@ -1,9 +1,68 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function Index() {
   return (
     <View style={styles.pageContainer}>
       
+      {Platform.OS === 'web' && (
+        <style>{`
+          /* Target ALL scrollable elements to force the 3D style */
+          *::-webkit-scrollbar {
+            width: 16px;
+            background: #dfdfdf;
+          }
+
+          *::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-bottom: 2px solid #000000;
+            border-right: 2px solid #000000;
+          }
+          
+          *::-webkit-scrollbar-thumb:active {
+            border-top: 2px solid #000000;
+            border-left: 2px solid #000000;
+            border-bottom: 2px solid #ffffff;
+            border-right: 2px solid #ffffff;
+          }
+
+          *::-webkit-scrollbar-button {
+            display: block;
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-bottom: 2px solid #000000;
+            border-right: 2px solid #000000;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 16px;
+            width: 16px;
+          }
+
+          *::-webkit-scrollbar-button:active {
+            border-top: 2px solid #000000;
+            border-left: 2px solid #000000;
+            border-bottom: 2px solid #ffffff;
+            border-right: 2px solid #ffffff;
+          }
+
+          /* Hide the 'wrong' buttons that create the double-arrow look */
+          *::-webkit-scrollbar-button:start:increment,
+          *::-webkit-scrollbar-button:end:decrement {
+            display: none;
+          }
+
+          /* Style the correct, singular buttons */
+          *::-webkit-scrollbar-button:start:decrement {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 4L4 8h8z" fill="black"/></svg>');
+          }
+          *::-webkit-scrollbar-button:end:increment {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 12L4 8h8z" fill="black"/></svg>');
+          }
+        `}</style>
+      )}
+
       <View style={styles.windowFrame}>
         
         {/* Title Bar */}
@@ -17,12 +76,12 @@ export default function Index() {
         {/* IE Menu & Toolbars */}
         <View style={styles.toolbarContainer}>
           <View style={styles.menuRow}>
-            <Text style={styles.menuText}>File</Text>
-            <Text style={styles.menuText}>Edit</Text>
-            <Text style={styles.menuText}>View</Text>
-            <Text style={styles.menuText}>Go</Text>
-            <Text style={styles.menuText}>Favorites</Text>
-            <Text style={styles.menuText}>Help</Text>
+            <Text style={styles.menuText}><Text style={styles.underline}>F</Text>ile</Text>
+            <Text style={styles.menuText}><Text style={styles.underline}>E</Text>dit</Text>
+            <Text style={styles.menuText}><Text style={styles.underline}>V</Text>iew</Text>
+            <Text style={styles.menuText}><Text style={styles.underline}>G</Text>o</Text>
+            <Text style={styles.menuText}>F<Text style={styles.underline}>a</Text>vorites</Text>
+            <Text style={styles.menuText}><Text style={styles.underline}>H</Text>elp</Text>
           </View>
           
           <View style={styles.addressRow}>
@@ -135,6 +194,9 @@ const styles = StyleSheet.create({
     color: '#000',
     marginRight: 15,
   },
+  underline: {
+    textDecorationLine: 'underline',
+  },
   addressRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -169,11 +231,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ffffff',
     borderRightColor: '#ffffff',
     margin: 4, 
-    padding: 15, 
   },
   scrollContent: {
     alignItems: 'center', 
-    paddingRight: 10, 
+    padding: 10, 
   },
   headerRow: {
     flexDirection: 'row',
