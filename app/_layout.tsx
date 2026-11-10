@@ -1,4 +1,4 @@
-import { Computer, Folder, HelpBook, Notepad } from '@react95/icons';
+import { Computer, Folder, HelpBook, Keys, Notepad } from '@react95/icons';
 import { useFonts } from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Link, Slot, usePathname } from 'expo-router';
@@ -50,6 +50,18 @@ export default function RootLayout() {
   return (
     <View style={styles.container}>
       
+      {/* --- GLOBAL RETRO CURSORS --- */}
+      {Platform.OS === 'web' && (
+        <style>{`
+          *, html, body, div, span, text, view {
+            cursor: url('https://win98icons.alexmeub.com/cursors/arrow.cur'), auto !important;
+          }
+          [role="button"], [role="link"], [data-focusable="true"], a, button, div[style*="cursor: pointer"], div[style*="cursor:pointer"] {
+            cursor: url('https://win98icons.alexmeub.com/cursors/pointer.cur'), pointer !important;
+          }
+        `}</style>
+      )}
+
       <LinearGradient
         colors={['#000000', '#0a0a2a', '#1a0b2e', '#2d004d']}
         style={styles.background}
@@ -100,6 +112,15 @@ export default function RootLayout() {
               <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
                 <HelpBook variant="16x16_4" style={{ width: 14, height: 14, marginRight: 4 }} />
                 <Text style={[styles.buttonText, { flex: 1 }]} numberOfLines={1} ellipsizeMode="tail">Guestbook.exe</Text>
+              </View>
+            </Pressable>
+          </Link>
+
+          <Link href="/socials" asChild>
+            <Pressable style={StyleSheet.flatten([styles.win95Button, styles.navTab, pathname === '/socials' && styles.buttonPressed])}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+                <Keys variant="32x32_4" style={{ width: 14, height: 14, marginRight: 4 }} />
+                <Text style={[styles.buttonText, { flex: 1 }]} numberOfLines={1} ellipsizeMode="tail">cursedlinks.com</Text>
               </View>
             </Pressable>
           </Link>
