@@ -29,7 +29,6 @@ export default function Guestbook() {
   const [inputName, setInputName] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   
-  // Easter Egg State
   const [showCatModal, setShowCatModal] = useState(false);
   const [currentCatIndex, setCurrentCatIndex] = useState(0);
   
@@ -43,7 +42,7 @@ export default function Guestbook() {
     const { data, error } = await supabase
       .from('guestbook')
       .select('*')
-      .order('created_at', { ascending: false })
+      .order('created_at', { ascending: true }) // Oldest at top, newest at bottom
       .limit(69);
 
     if (error) {
@@ -82,7 +81,7 @@ export default function Guestbook() {
       canDelete: true,
     };
 
-    setMessages((prevMessages) => [newMessage, ...prevMessages].slice(0, 69));
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
     
     setIsModalVisible(false);
     setInputText('');
@@ -116,6 +115,20 @@ export default function Guestbook() {
   return (
     <View style={styles.pageContainer}>
       
+      {/* Scrollbar CSS Injection for Web */}
+      {Platform.OS === 'web' && (
+        <style>{`
+          *::-webkit-scrollbar { width: 16px; background: #dfdfdf; }
+          *::-webkit-scrollbar-thumb { background: #c0c0c0; border-top: 2px solid #ffffff; border-left: 2px solid #ffffff; border-bottom: 2px solid #000000; border-right: 2px solid #000000; }
+          *::-webkit-scrollbar-thumb:active { border-top: 2px solid #000000; border-left: 2px solid #000000; border-bottom: 2px solid #ffffff; border-right: 2px solid #ffffff; }
+          *::-webkit-scrollbar-button { display: block; background-color: #c0c0c0; border-top: 2px solid #ffffff; border-left: 2px solid #ffffff; border-bottom: 2px solid #000000; border-right: 2px solid #000000; background-repeat: no-repeat; background-position: center; height: 16px; width: 16px; }
+          *::-webkit-scrollbar-button:active { border-top: 2px solid #000000; border-left: 2px solid #000000; border-bottom: 2px solid #ffffff; border-right: 2px solid #ffffff; }
+          *::-webkit-scrollbar-button:start:increment, *::-webkit-scrollbar-button:end:decrement { display: none; }
+          *::-webkit-scrollbar-button:start:decrement { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 4L4 8h8z" fill="black"/></svg>'); }
+          *::-webkit-scrollbar-button:end:increment { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M8 12L4 8h8z" fill="black"/></svg>'); }
+        `}</style>
+      )}
+
       <View style={styles.windowFrame}>
         <View style={styles.titleBar}>
           <Text style={styles.titleText}>GUESTBOOK.exe</Text>
